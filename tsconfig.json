@@ -4,8 +4,9 @@
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
-    "jsx": "react",
-    "allowJs": true
+    "jsx": "preserve",
+    "allowJs": true,
+    "lib": ["dom", "es5", "es6", "esnext"]
   },
   "include": ["src"]
 }
