@@ -6,14 +6,15 @@ module.exports = {
   mode: 'development',
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
-    path: path.resolve(__dirname, './dev-dist'),
-    publicPath: path.resolve(__dirname, './public'),
+    path: path.resolve(__dirname, './dist'),
+    filename: 'main.bundle.js',
   },
   devtool: 'eval-source-map',
   devServer: {
     host: 'localhost',
     port: 8080,
     open: true,
+    hot: true,
   },
   plugins: [
     new HTMLWebpackPlugin({
@@ -21,6 +22,9 @@ module.exports = {
       title: 'Webpack-конфигурация для простых проектов',
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.ts', '.jsx', '.tsx'],
+  },
   module: {
     rules: [
       {
