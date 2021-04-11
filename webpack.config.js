@@ -25,11 +25,20 @@ module.exports = {
     rules: [
       {
         test: /\.(ts|tsx)$/i,
+        exclude: /node_modules/i,
         use: ['ts-loader'],
       },
       {
-        test: /\.(js|jsx)$/i,
-        use: ['babel-loader'],
+        test: /\.m?(js|jsx)$/i,
+        exclude: /node_modules/i,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        ],
       },
       {
         test: /\.css$/i,
