@@ -1,7 +1,7 @@
-const init = () => {
+import './index.scss'
+
+const renderIndex = () => {
   console.log('Init')
 }
 
-init()
-
-export {}
+renderIndex()
