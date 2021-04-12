@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WebpackBar = require('webpackbar')
 
 module.exports = {
   mode: 'production',
@@ -13,6 +14,9 @@ module.exports = {
     filename: '[name].[contenthash].bundle.js',
   },
   plugins: [
+    new WebpackBar({
+      name: 'Production-сборка',
+    }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].bundle.css',

@@ -1,6 +1,8 @@
 const path = require('path')
 const webpack = require('webpack')
+
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+const WebpackBar = require('webpackbar')
 
 module.exports = {
   mode: 'development',
@@ -17,6 +19,9 @@ module.exports = {
     hot: true,
   },
   plugins: [
+    new WebpackBar({
+      name: 'Development-сборка',
+    }),
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       title: 'Webpack-конфигурация для простых проектов',
