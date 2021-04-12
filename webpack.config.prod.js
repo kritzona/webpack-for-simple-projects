@@ -3,6 +3,7 @@ const webpack = require('webpack')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -12,6 +13,7 @@ module.exports = {
     filename: '[name].[contenthash].bundle.js',
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].bundle.css',
     }),
@@ -20,6 +22,7 @@ module.exports = {
       title: 'Webpack-конфигурация для простых проектов',
     }),
   ],
+  optimization: {},
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
