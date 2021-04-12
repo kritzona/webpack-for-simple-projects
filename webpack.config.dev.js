@@ -20,8 +20,9 @@ module.exports = {
   },
   plugins: [
     new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
       title: 'Webpack-конфигурация для простых проектов',
+      template: path.resolve(__dirname, './public/index.html'),
+      inject: 'body',
     }),
     new WebpackBar({
       name: 'Development-сборка',

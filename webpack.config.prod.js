@@ -18,8 +18,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
       title: 'Webpack-конфигурация для простых проектов',
+      template: path.resolve(__dirname, './public/index.html'),
+      inject: 'body',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].bundle.css',
