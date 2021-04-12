@@ -9,11 +9,11 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'main.bundle.js',
+    filename: '[name].[contenthash].bundle.js',
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'main.bundle.css',
+      filename: '[name].[contenthash].bundle.css',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
@@ -33,14 +33,7 @@ module.exports = {
       {
         test: /\.m?(js|jsx)$/i,
         exclude: /node_modules/i,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
-          },
-        ],
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/i,

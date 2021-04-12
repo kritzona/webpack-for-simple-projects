@@ -7,7 +7,7 @@ module.exports = {
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'main.bundle.js',
+    filename: '[name].[contenthash].bundle.js',
   },
   devtool: 'eval-source-map',
   devServer: {
@@ -35,14 +35,7 @@ module.exports = {
       {
         test: /\.m?(js|jsx)$/i,
         exclude: /node_modules/i,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
-          },
-        ],
+        use: ['babel-loader'],
       },
       {
         test: /\.css$/i,
