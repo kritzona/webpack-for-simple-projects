@@ -19,12 +19,12 @@ module.exports = {
     hot: true,
   },
   plugins: [
-    new WebpackBar({
-      name: 'Development-сборка',
-    }),
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       title: 'Webpack-конфигурация для простых проектов',
+    }),
+    new WebpackBar({
+      name: 'Development-сборка',
     }),
   ],
   resolve: {

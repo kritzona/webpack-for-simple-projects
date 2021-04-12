@@ -6,6 +6,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WebpackBar = require('webpackbar')
 
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
+
 module.exports = {
   mode: 'production',
   entry: path.resolve(__dirname, './src/main.ts'),
@@ -14,19 +17,29 @@ module.exports = {
     filename: '[name].[contenthash].bundle.js',
   },
   plugins: [
-    new WebpackBar({
-      name: 'Production-сборка',
-    }),
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].bundle.css',
-    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
       title: 'Webpack-конфигурация для простых проектов',
     }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].bundle.css',
+    }),
+    new CleanWebpackPlugin(),
+    new WebpackBar({
+      name: 'Production-сборка',
+    }),
   ],
-  optimization: {},
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMinimizerWebpackPlugin({
+        exclude: /node_modules/i,
+      }),
+      new TerserWebpackPlugin({
+        exclude: /node_modules/i,
+      }),
+    ],
+  },
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx'],
   },
